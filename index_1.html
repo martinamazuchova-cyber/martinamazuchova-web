@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martina Mazúchová — Mediálna a digitálna marketingová strategička</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#16232A;
+    --ink-soft:#57635F;
+    --paper:#EEF0E9;
+    --paper-alt:#E4E7DD;
+    --card:#FBFBF8;
+    --line:#D3D6C9;
+    --signal:#C23B26;
+    --signal-soft:#E9C9C1;
+    --sage:#7C9A8E;
+    --sage-deep:#5C7A6E;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    line-height:1.05;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--signal);
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  .eyebrow.alt{color:var(--sage-deep);}
+  .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 0 3px rgba(194,59,38,.18);
+    flex:none;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  .eyebrow.alt .dot{background:var(--sage-deep);box-shadow:0 0 0 3px rgba(92,122,110,.18);}
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:.35;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .dot{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:22px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    mix-blend-mode:normal;
+    transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+  }
+  header.nav.solid{
+    background:rgba(238,240,233,.86);
+    backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 var(--line);
+    padding:14px 40px;
+  }
+  .nav-name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:18px;
+    letter-spacing:.01em;
+  }
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;}
+  .nav-links a{position:relative;padding-bottom:3px;}
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--signal);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:.06em;
+    border:1px solid var(--ink);
+    padding:8px 16px;
+    border-radius:100px;
+    display:none;
+  }
+  @media(min-width:860px){.nav-cta{display:inline-block;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;align-items:stretch;
+    padding-top:64px;
+  }
+  .hero-grid{
+    max-width:var(--maxw);
+    margin:0 auto;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:40px;
+    align-items:center;
+    padding:60px 40px 40px;
+  }
+  .hero-copy .eyebrow{margin-bottom:26px;}
+  .hero-copy h1{
+    font-size:clamp(34px,4.6vw,58px);
+    letter-spacing:-.01em;
+  }
+  .hero-copy h1 em{
+    font-style:italic;
+    color:var(--signal);
+    font-weight:500;
+  }
+  .hero-copy .lede{
+    margin-top:24px;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:36px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;letter-spacing:.05em;
+    padding:14px 26px;
+    border-radius:100px;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn-primary{
+    background:var(--ink);color:var(--paper);
+  }
+  .btn-primary:hover{background:var(--signal);transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--ink);color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--signal);color:var(--signal);transform:translateY(-2px);}
+
+  .hero-photo{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:6px;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center 18%;
+    filter:saturate(1.03) contrast(1.02);
+  }
+  .hero-photo::after{
+    content:'';position:absolute;inset:0;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+    border-radius:6px;
+  }
+  .onair{
+    position:absolute;top:18px;left:18px;
+    background:rgba(22,35,42,.82);
+    backdrop-filter:blur(6px);
+    color:#fff;
+    padding:9px 14px 9px 12px;
+    border-radius:100px;
+    display:flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.1em;
+  }
+  .onair .dot{background:var(--signal);}
+  .photo-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:16px 18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.05em;
+    color:#EEF0E9cc;
+    background:linear-gradient(0deg, rgba(22,35,42,.65), transparent);
+  }
+
+  .scrolldown{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.1em;
+    color:var(--ink-soft);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    opacity:.8;
+  }
+  .scrolldown .line{width:1px;height:26px;background:var(--ink-soft);animation:drop 1.8s ease-in-out infinite;}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+  @media(prefers-reduced-motion:reduce){.scrolldown .line{animation:none;}}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;padding:40px 24px 32px;}
+    .hero-photo{order:-1;aspect-ratio:3/4;max-width:340px;margin:0 auto;}
+    .wrap{padding:0 24px;}
+    .scrolldown{display:none;}
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker-section{
+    background:var(--ink);
+    color:var(--paper);
+    padding:16px 0;
+    overflow:hidden;
+    position:relative;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .ticker-label{
+    position:absolute;left:0;top:0;bottom:0;
+    display:flex;align-items:center;gap:9px;
+    padding:0 18px;
+    background:linear-gradient(90deg, var(--ink) 60%, transparent);
+    z-index:2;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.14em;
+    color:#fff;
+  }
+  .ticker-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 42s linear infinite;
+    padding-left:180px;
+  }
+  @media(prefers-reduced-motion:reduce){.ticker-track{animation-duration:120s;}}
+  .ticker-track:hover{animation-play-state:paused;}
+  @keyframes marquee{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .tick-item{
+    display:flex;align-items:center;gap:14px;
+    padding:0 46px;
+    white-space:nowrap;
+    font-size:14.5px;
+  }
+  .tick-item .quote{color:#EEF0E9;font-style:italic;font-family:'Fraunces',serif;}
+  .tick-item .who{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.06em;
+    color:var(--sage);
+  }
+  .tick-sep{color:var(--signal);opacity:.7;}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:110px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:18px;}
+  .section-head h2{font-size:clamp(26px,3vw,38px);}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.6;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- LOGOS ---------- */
+  .logos-section{padding:80px 0;border-bottom:1px solid var(--line);}
+  .logos-head{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:38px;
+  }
+  .logos-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  @media(min-width:620px){.logos-grid{grid-template-columns:repeat(4,1fr);}}
+  @media(min-width:960px){.logos-grid{grid-template-columns:repeat(5,1fr);}}
+  .logo-cell{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:26px 18px;
+    display:flex;align-items:center;justify-content:center;
+    min-height:88px;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:.01em;
+    color:var(--ink-soft);
+    text-align:center;
+    transition:color .3s ease, background .3s ease;
+  }
+  .logo-cell:hover{color:var(--signal);background:var(--card);}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper-alt);}
+  .about-grid{
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start;
+  }
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .about-text p{
+    font-size:16.5px;line-height:1.75;color:var(--ink);
+  }
+  .about-text p + p{margin-top:18px;}
+  .stat-grid{
+    margin-top:44px;
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+  }
+  .stat{padding:22px 18px 0 0;}
+  .stat .num{
+    font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:var(--signal);
+    display:block;
+  }
+  .stat .lbl{
+    margin-top:6px;font-size:12.5px;color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace;letter-spacing:.02em;
+  }
+  .about-side{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:34px 30px;
+  }
+  .about-side h3{font-size:19px;margin-bottom:18px;}
+  .about-side ul{list-style:none;margin:0;padding:0;}
+  .about-side li{
+    display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--ink-soft);line-height:1.5;
+  }
+  .about-side li:first-of-type{border-top:none;}
+  .about-side li .tag{
+    flex:none;width:20px;color:var(--sage-deep);font-family:'IBM Plex Mono',monospace;font-size:12px;padding-top:1px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .service-row{
+    display:grid;
+    grid-template-columns:70px 1fr 1.4fr;
+    gap:28px;
+    padding:34px 0;
+    border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .services-list .service-row:last-child{border-bottom:1px solid var(--line);}
+  @media(max-width:760px){
+    .service-row{grid-template-columns:44px 1fr;}
+    .service-row .svc-desc{grid-column:1/-1;padding-left:44px;margin-top:4px;}
+  }
+  .svc-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;color:var(--signal);
+    padding-top:4px;
+  }
+  .svc-title h3{font-size:20px;font-weight:600;line-height:1.25;}
+  .svc-desc p{font-size:15px;line-height:1.65;color:var(--ink-soft);}
+
+  /* ---------- TESTIMONIALS FULL ---------- */
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  @media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+  .testi-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:32px 28px;
+    display:flex;flex-direction:column;
+    min-height:260px;
+  }
+  .testi-mark{
+    font-family:'Fraunces',serif;font-size:44px;color:var(--signal-soft);line-height:1;margin-bottom:6px;
+  }
+  .testi-card p.quote{
+    font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.55;color:var(--ink);flex:1;
+  }
+  .testi-who{
+    margin-top:24px;padding-top:16px;border-top:1px solid var(--line);
+  }
+  .testi-who .name{font-weight:600;font-size:14.5px;}
+  .testi-who .co{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sage-deep);margin-top:3px;
+  }
+
+  /* ---------- CTA / FOOTER ---------- */
+  .cta{
+    background:var(--ink);color:var(--paper);
+    text-align:center;
+  }
+  .cta .eyebrow{justify-content:center;color:var(--sage);}
+  .cta h2{
+    font-size:clamp(30px,5vw,54px);
+    max-width:16ch;margin:22px auto 0;
+  }
+  .cta h2 em{color:var(--signal);font-style:italic;font-weight:500;}
+  .cta p{margin:22px auto 0;color:#C7CDC7;max-width:48ch;font-size:16px;line-height:1.6;}
+  .cta .hero-actions{justify-content:center;margin-top:38px;}
+  .cta .btn-primary{background:var(--signal);color:#fff;}
+  .cta .btn-primary:hover{background:#fff;color:var(--ink);}
+  .cta .btn-ghost{border-color:#5c6864;color:var(--paper);}
+  .cta .btn-ghost:hover{border-color:var(--sage);color:var(--sage);}
+
+  footer{
+    background:var(--ink);color:#8B948F;
+    padding:36px 0 44px;
+    border-top:1px solid rgba(255,255,255,.08);
+    font-size:13px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  footer a:hover{color:var(--sage);}
+
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-name">Martina Mazúchová</div>
+  <nav class="nav-links">
+    <a href="#o-mne">O mne</a>
+    <a href="#sluzby">Služby</a>
+    <a href="#referencie">Referencie</a>
+  </nav>
+  <a class="nav-cta" href="#kontakt">Napíšte mi →</a>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span>ACCOUNT MANAGERKA · MEDIÁLNA STRATEGIČKA</div>
+      <h1>Mediálne kampane, ktorým rozumejú <em>čísla aj ľudia.</em></h1>
+      <p class="lede">Viac ako 15 rokov pomáham značkám a agentúram plánovať, riadiť a vyhodnocovať mediálne kampane tak, aby dávali zmysel od stratégie až po faktúru — nielen v prezentácii pre klienta.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Napíšte mi →</a>
+        <a href="#referencie" class="btn btn-ghost">Pozrieť referencie</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="martina-portrait.jpg" alt="Martina Mazúchová, mediálna a digitálna marketingová strategička">
+      <div class="onair"><span class="dot"></span>OTVORENÁ NOVÝM PROJEKTOM</div>
+      <div class="photo-caption">BRATISLAVA · SLOVENSKO</div>
+    </div>
+  </div>
+  <div class="scrolldown"><span>SCROLL</span><span class="line"></span></div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker-section" aria-label="Referencie klientov">
+  <div class="ticker-label"><span class="dot"></span>REFERENCIE</div>
+  <div class="ticker-track" id="tickerTrack">
+    <div class="tick-item"><span class="quote">"Je jistotou toho, že průběh našich projektů jde vždy flexibilne, hladce a navyše s lidskostí."</span><span class="who">— TEREZA BÁČOVÁ, MEDIAPLUS PRAGUE</span></div>
+    <span class="tick-sep">✦</span>
+    <div class="tick-item"><span class="quote">"Maťa má prehľad a názor, preto ju vyhľadávam na konzultáciu viacerých projektov."</span><span class="who">— DÁVID TVRDOŇ, SK PODCASTY</span></div>
+    <span class="tick-sep">✦</span>
+    <div class="tick-item"><span class="quote">"Martina vždy vie reagovať a posunúť naše spoločné uvažovanie správnym smerom."</span><span class="who">— JANA ŠAVOLTOVÁ, CRESCO REAL ESTATE</span></div>
+    <span class="tick-sep">✦</span>
+    <!-- duplicated for seamless loop -->
+    <div class="tick-item"><span class="quote">"Je jistotou toho, že průběh našich projektů jde vždy flexibilne, hladce a navyše s lidskostí."</span><span class="who">— TEREZA BÁČOVÁ, MEDIAPLUS PRAGUE</span></div>
+    <span class="tick-sep">✦</span>
+    <div class="tick-item"><span class="quote">"Maťa má prehľad a názor, preto ju vyhľadávam na konzultáciu viacerých projektov."</span><span class="who">— DÁVID TVRDOŇ, SK PODCASTY</span></div>
+    <span class="tick-sep">✦</span>
+    <div class="tick-item"><span class="quote">"Martina vždy vie reagovať a posunúť naše spoločné uvažovanie správnym smerom."</span><span class="who">— JANA ŠAVOLTOVÁ, CRESCO REAL ESTATE</span></div>
+    <span class="tick-sep">✦</span>
+  </div>
+</div>
+
+<!-- ============ LOGOS ============ -->
+<section class="logos-section">
+  <div class="wrap reveal">
+    <div class="logos-head">Značky, s ktorými som pracovala</div>
+    <div class="logos-grid">
+      <div class="logo-cell">Coca‑Cola</div>
+      <div class="logo-cell">H&amp;M</div>
+      <div class="logo-cell">Honda</div>
+      <div class="logo-cell">UPC</div>
+      <div class="logo-cell">DeLonghi</div>
+      <div class="logo-cell">Kenwood</div>
+      <div class="logo-cell">Braun Household</div>
+      <div class="logo-cell">Nutribullet</div>
+      <div class="logo-cell">Autopolis</div>
+      <div class="logo-cell">KIA</div>
+      <div class="logo-cell">Voxberg</div>
+      <div class="logo-cell">Budvar</div>
+      <div class="logo-cell">Cresco Real Estate</div>
+      <div class="logo-cell">B/S/H</div>
+      <div class="logo-cell">Orange</div>
+      <div class="logo-cell">Gardena</div>
+      <div class="logo-cell">Oriflame</div>
+      <div class="logo-cell">OMV</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="o-mne">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow alt"><span class="dot"></span>O MNE</div>
+      <h2>Od plánu po faktúru — na jednom mieste.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Som account managerka a mediálna strategička s praxou, ktorá pokrýva celý životný cyklus kampane – od plánovania cez implementáciu až po vyhodnotenie a reporting. Baví ma spájať dáta so zdravým úsudkom: dobré rozhodnutie v médiách nevzniká len z tabuľky, ale z pochopenia značky, cieľovej skupiny aj kontextu, v ktorom kampaň žije.</p>
+        <p>Počas svojej kariéry som spravovala mediálne kampane značiek ako Coca-Cola, H&amp;M, DeLonghi, Honda, UPC, KIA či Voxberg. Mám skúsenosť rovnako s lokálnymi malými a rastúcimi značkami, ako aj s veľkými sieťovými klientmi — a viem, že každý z nich potrebuje iný prístup, aj keď rovnakú mieru profesionality a nasadenia.</p>
+        <div class="stat-grid">
+          <div class="stat"><span class="num">15+</span><span class="lbl">ROKOV V MEDIÁLNOM BIZNISE</span></div>
+          <div class="stat"><span class="num">100+</span><span class="lbl">MEDIÁLNYCH KAMPANÍ</span></div>
+          <div class="stat"><span class="num">2</span><span class="lbl">STRANY STOLA — AGENTÚRA AJ KLIENT</span></div>
+        </div>
+      </div>
+      <div class="about-side reveal">
+        <h3>Čo odo mňa dostanete</h3>
+        <ul>
+          <li><span class="tag">→</span>Dáta a analýzy premenené na jasné odporúčania, ktorým rozumie aj klient bez marketingového vzdelania.</li>
+          <li><span class="tag">→</span>Dlhodobý vzťah postavený na dôvere, rýchlej komunikácii a proaktívnom prístupe.</li>
+          <li><span class="tag">→</span>Prepojenie tímov — stratégie, performance, buying aj partnerských agentúr.</li>
+          <li><span class="tag">→</span>Projekt dotiahnutý do konca — od briefu až po faktúru a vyhodnotenie.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="sluzby">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span>ČO PONÚKAM</div>
+      <h2>Päť oblastí, jeden zodpovedný človek.</h2>
+      <p>Nehľadám len miesto v tíme — preberám zodpovednosť za výsledok kampane ako celku.</p>
+    </div>
+    <div class="services-list reveal">
+      <div class="service-row">
+        <div class="svc-num">01</div>
+        <div class="svc-title"><h3>Plánovanie a mediálna stratégia</h3></div>
+        <div class="svc-desc"><p>Tvorba mediálnych plánov pre online kampane postavených na analýzach, dátových podkladoch a poučení z predchádzajúcich kampaní.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="svc-num">02</div>
+        <div class="svc-title"><h3>Riadenie a implementácia kampaní</h3></div>
+        <div class="svc-desc"><p>Kompletná koordinácia mediálneho nákupu a realizácie schválených projektov naprieč Google Ads, Meta Business Manager, CM360, DV360 a Adform, s dátovou oporou v GA4, Gemius Direct Effect a Gemius Audience.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="svc-num">03</div>
+        <div class="svc-title"><h3>Vyhodnocovanie a odporúčania</h3></div>
+        <div class="svc-desc"><p>Analýzy výkonu kampaní a ich prezentácia klientovi v zrozumiteľnej forme — vrátane konkrétnych odporúčaní na ďalšie kroky.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="svc-num">04</div>
+        <div class="svc-title"><h3>Account management</h3></div>
+        <div class="svc-desc"><p>Prvý kontakt, ktorý rieši požiadavky rýchlo a proaktívne. Budovanie vzťahu založeného na dôvere a odbornosti v digitálnej komunikácii.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="svc-num">05</div>
+        <div class="svc-title"><h3>Spolupráca naprieč tímami</h3></div>
+        <div class="svc-desc"><p>Koordinácia s tímami stratégie, performance a buying, aj s partnerskými mediálnymi agentúrami — vždy s rovnakým štandardom servisu.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS FULL ============ -->
+<section class="about" id="referencie">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow alt"><span class="dot"></span>REFERENCIE</div>
+      <h2>Čo o mne hovoria klienti a partneri.</h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="quote">Martina je klíčová spojka pro naši agenturu v oblasti všeho, co se týká digitálu na Slovensku. Je jistotou toho, že průběh našich projektů jde vždy flexibilne, hladce a navyše s lidskostí.</p>
+        <div class="testi-who"><div class="name">Tereza Báčová</div><div class="co">Mediaplus Prague</div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="quote">Pokiaľ potrebujem objektívny a triezvy pohľad na mediálny trh, obraciam sa vždy na jedného človeka. Maťa má prehľad a názor, a preto ju vyhľadávam na konzultáciu viacerých mojich projektov.</p>
+        <div class="testi-who"><div class="name">Dávid Tvrdoň</div><div class="co">SK Podcasty</div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="quote">Kampane na naše developmenty sú veľmi rôznorodé. Niekde ideme hlboko do dát, niekde potrebujeme helicopter view. Martina vždy vie reagovať a posunúť naše spoločné uvažovanie správnym smerom.</p>
+        <div class="testi-who"><div class="name">Jana Šavoltová</div><div class="co">Cresco Real Estate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="kontakt">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>POĎME SPOLUPRACOVAŤ</div>
+    <h2>Pripravená posunúť vašu <em>ďalšiu kampaň.</em></h2>
+    <p>Ak hľadáte niekoho, kto vašej značke alebo agentúre prinesie poriadok, jasnú stratégiu a výsledky, ktoré sa dajú obhájiť pred vedením — ozvite sa mi.</p>
+    <div class="hero-actions">
+      <a href="mailto:martina.mazuchova1@gmail.com" class="btn btn-primary">martina.mazuchova1@gmail.com</a>
+      <a href="https://www.linkedin.com/in/martina-maz%C3%BAchov%C3%A1-b87213153/?skipRedirect=true" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn profil →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px;">
+    <span>© 2026 Martina Mazúchová</span>
+    <span><a href="#o-mne">O mne</a> &nbsp;·&nbsp; <a href="#sluzby">Služby</a> &nbsp;·&nbsp; <a href="#referencie">Referencie</a> &nbsp;·&nbsp; <a href="#kontakt">Kontakt</a></span>
+  </div>
+</footer>
+
+<script>
+  // Nav solid state on scroll
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', window.scrollY > 40);
+  }, {passive:true});
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
